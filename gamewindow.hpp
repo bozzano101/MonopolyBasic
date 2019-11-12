@@ -2,7 +2,11 @@
 #define GAMEWINDOW_HPP
 
 #include <QWidget>
+#include <QPainter>
+#include <QGridLayout>
 #include <QDebug>
+
+#include <field.hpp>
 
 namespace Ui {
 class GameWindow;
@@ -24,6 +28,8 @@ private:
     QString playerName;
     QString playerColor;
     int opponentsNumber;
+
+    Field *myField = new Field(this);
 };
 
 #endif // GAMEWINDOW_HPP
