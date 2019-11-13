@@ -19,11 +19,15 @@ SOURCES += \
     field.cpp \
     gamewindow.cpp \
     main.cpp \
+    player.cpp \
+    playersrepository.cpp \
     welcomewindow.cpp
 
 HEADERS += \
     field.hpp \
     gamewindow.hpp \
+    player.hpp \
+    playersrepository.hpp \
     welcomewindow.hpp
 
 FORMS += \

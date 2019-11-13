@@ -7,6 +7,7 @@
 #include <QDebug>
 
 #include <field.hpp>
+#include <playersrepository.hpp>
 
 namespace Ui {
 class GameWindow;
@@ -30,6 +31,8 @@ private:
     int opponentsNumber;
 
     Field *myField = new Field(this);
+
+    PlayersRepository playersRepo;
 };
 
 #endif // GAMEWINDOW_HPP
