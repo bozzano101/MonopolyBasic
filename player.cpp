@@ -2,21 +2,21 @@
 
 Player::Player()
 {
-    id = -1;
-    name = QString();
-    money = 0;
-    color = QColor();
+    m_id = -1;
+    m_name = QString();
+    m_money = 0;
+    m_color = QColor();
 }
 
 Player::Player(int _id, QString _name, int _money, QColor _color)
 {
-    id = _id;
-    name = _name;
-    money = _money;
-    color = _color;
+    m_id = _id;
+    m_name = _name;
+    m_money = _money;
+    m_color = _color;
 }
 
-int Player::Id()
+int Player::id()
 {
-    return id;
+    return m_id;
 }

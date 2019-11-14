@@ -6,7 +6,6 @@ GameWindow::GameWindow(QWidget *parent) :
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
-    ui->gridLayout->addWidget(myField);
 }
 
 GameWindow::~GameWindow()
@@ -16,8 +15,8 @@ GameWindow::~GameWindow()
 
 void GameWindow::sendWelcomeInfoToGame(QString _playerName, QString _playerColor, int _opponentNum)
 {
-    playerName = _playerName;
-    playerColor = _playerColor;
-    opponentsNumber = _opponentNum;
-    qDebug() << playerName << "  " << playerColor << "  " << QString::number(opponentsNumber);
+    m_player = new Player(0, _playerName, STARTING_MONEY, QColor(_playerColor));
+    m_opponentsNumber = _opponentNum;
+    m_aiPlayers = m_playersRepo.generateAiPlayers(m_opponentsNumber);
+
 }

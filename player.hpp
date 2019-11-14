@@ -11,13 +11,13 @@ class Player
 public:
     Player();
     Player(int _id, QString _name, int _money, QColor _color);
-    int Id();
+    int id();
 
 private:
-    int id;
-    QString name;
-    int money;
-    QColor color;
+    int m_id;
+    QString m_name;
+    int m_money;
+    QColor m_color;
 };
 
 #endif // PLAYER_HPP

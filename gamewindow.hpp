@@ -26,13 +26,10 @@ public slots:
 
 private:
     Ui::GameWindow *ui;
-    QString playerName;
-    QString playerColor;
-    int opponentsNumber;
-
-    Field *myField = new Field(this);
-
-    PlayersRepository playersRepo;
+    Player *m_player;
+    int m_opponentsNumber;
+    PlayersRepository m_playersRepo;
+    QVector<Player*> m_aiPlayers;
 };
 
 #endif // GAMEWINDOW_HPP

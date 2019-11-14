@@ -25,7 +25,7 @@
   <property name="windowTitle">
    <string>Monopoly</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -450,7 +450,7 @@
      </widget>
     </item>
     <item row="0" column="0" colspan="2">
-     <widget class="StartField" name="field0Frame">
+     <widget class="QFrame" name="field0Frame">
       <property name="minimumSize">
        <size>
         <width>100</width>
@@ -502,14 +502,6 @@
    </layout>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>StartField</class>
-   <extends>QFrame</extends>
-   <header location="global">field.hpp</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
