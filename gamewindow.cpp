@@ -5,7 +5,10 @@ GameWindow::GameWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GameWindow)
 {
+    qDebug() << "GameWindow - Constructor started.";
     ui->setupUi(this);
+    prepareFields();
+    qDebug() << "GameWindow - Constructor ended.";
 }
 
 GameWindow::~GameWindow()
@@ -18,5 +21,11 @@ void GameWindow::sendWelcomeInfoToGame(QString _playerName, QString _playerColor
     m_player = new Player(0, _playerName, STARTING_MONEY, QColor(_playerColor));
     m_opponentsNumber = _opponentNum;
     m_aiPlayers = m_playersRepo.generateAiPlayers(m_opponentsNumber);
+
+
+}
+
+void GameWindow::prepareFields()
+{
 
 }

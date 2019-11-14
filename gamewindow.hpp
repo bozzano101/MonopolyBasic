@@ -30,6 +30,8 @@ private:
     int m_opponentsNumber;
     PlayersRepository m_playersRepo;
     QVector<Player*> m_aiPlayers;
+
+    void prepareFields();
 };
 
 #endif // GAMEWINDOW_HPP
