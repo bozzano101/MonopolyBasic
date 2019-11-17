@@ -20,3 +20,8 @@ int Player::id()
 {
     return m_id;
 }
+
+QColor Player::color()
+{
+    return m_color;
+}

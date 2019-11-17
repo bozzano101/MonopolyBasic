@@ -26,6 +26,12 @@ void Field::paintEvent(QPaintEvent *)
     painter.setFont(priceFont);
     painter.drawText(5,55, "Buy for: " + QString::number(m_priceForBuy));
     painter.drawText(5,70, "Rent price: " + QString::number(m_priceForRenting));
+
+    for(int i = 0; i < m_playersOnField.size(); i++) {
+        QBrush brush(m_playersOnField[i]->color(), Qt::SolidPattern);
+        painter.setBrush(brush);
+        painter.drawEllipse(5+i*22, 5, 20, 20);
+    }
 }
 
 void Field::setId(int id)
