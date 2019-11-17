@@ -20,11 +20,13 @@ public:
     Field(QWidget *parent);
     void paintEvent(QPaintEvent *) override;
     void setId(int id);
+    void setStreetName(QString name);
     void setPriceForBuy(int price);
     void setPriceForRenting(int price);
     void setOwner(Player *owner);
     void addPlayerOnField(Player *p);
     void removePlayerOnField(Player *p);
+    void prepareField(int id, QString name, int priceForBuy, int priceForRent);
 
 private:
     int m_id;
