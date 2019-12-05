@@ -16,19 +16,28 @@ GameWindow::~GameWindow()
 
 void GameWindow::sendWelcomeInfoToGame(QString _playerName, QString _playerColor, int _opponentNum)
 {
+
     m_player = new Player(0, _playerName, STARTING_MONEY, QColor(_playerColor));
     m_opponentsNumber = _opponentNum;
     m_aiPlayers = m_playersRepo.generateAiPlayers(m_opponentsNumber);
 
-    ui->field2Frame->addPlayerOnField(m_aiPlayers[0]);
-    ui->field3Frame->addPlayerOnField(m_aiPlayers[1]);
-    ui->field3Frame->addPlayerOnField(m_aiPlayers[2]);
-    ui->field3Frame->addPlayerOnField(m_player);
+    for(int i = 0; i < m_aiPlayers.size(); i++)
+        ui->field0Frame->addPlayerOnField(m_aiPlayers[i]);
+    ui->field0Frame->addPlayerOnField(m_player);
+
+    // TODO : Refactor this code; If player exist, give him field
+    ui->centralPlayer1Frame->prepareField(m_aiPlayers[0]);
+    ui->centralPlayer2Frame->prepareField(m_aiPlayers[1]);
+    //
+
+    ui->centralGamerFrame->prepareField(m_player);
 
 }
 
 void GameWindow::prepareFields()
 {
+
+    ui->field0Frame->prepareField();
     ui->field1Frame->prepareField(1, "Allen Street", 500, 50);
     ui->field2Frame->prepareField(2, "Beekman Place", 750, 75);
     ui->field3Frame->prepareField(3, "Cabrini Bvd", 300, 30);

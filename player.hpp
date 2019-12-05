@@ -13,6 +13,9 @@ public:
     Player(int _id, QString _name, int _money, QColor _color);
     int id();
     QColor color();
+    int money();
+    QString name();
+
 
 private:
     int m_id;

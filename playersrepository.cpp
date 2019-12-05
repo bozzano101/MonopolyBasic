@@ -8,7 +8,7 @@ PlayersRepository::PlayersRepository()
     Player *aiPlayer1  = new Player(1 , QString("James"),    STARTING_MONEY, QColor(Qt::darkRed));
     Player *aiPlayer2  = new Player(2 , QString("John"),     STARTING_MONEY, QColor(Qt::darkGreen));
     Player *aiPlayer3  = new Player(3 , QString("Robert"),   STARTING_MONEY, QColor(Qt::darkBlue));
-    Player *aiPlayer4  = new Player(4 , QString("Michael"),  STARTING_MONEY, QColor(Qt::black));
+    Player *aiPlayer4  = new Player(4 , QString("Michael"),  STARTING_MONEY, QColor(Qt::darkMagenta));
     Player *aiPlayer5  = new Player(5 , QString("Wiliam"),   STARTING_MONEY, QColor(Qt::cyan));
     Player *aiPlayer6  = new Player(6 , QString("David"),    STARTING_MONEY, QColor(Qt::magenta));
     Player *aiPlayer7  = new Player(7 , QString("Richard"),  STARTING_MONEY, QColor(Qt::darkYellow));

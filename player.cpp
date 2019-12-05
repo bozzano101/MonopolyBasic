@@ -25,3 +25,13 @@ QColor Player::color()
 {
     return m_color;
 }
+
+int Player::money()
+{
+    return m_money;
+}
+
+QString Player::name()
+{
+    return m_name;
+}

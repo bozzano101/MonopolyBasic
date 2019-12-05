@@ -80,7 +80,16 @@ void Field::prepareField(int id, QString name, int priceForBuy, int priceForRent
 StartField::StartField(QWidget *parent)
     :Field(parent)
 {
+    this->resize(100,100);
+    QSizePolicy s(QSizePolicy::Fixed,QSizePolicy::Fixed);
+    this->setSizePolicy(s);
 
+    m_id = -1;
+}
+
+void StartField::prepareField()
+{
+    m_id = 0;
 }
 
 void StartField::paintEvent(QPaintEvent *)
@@ -89,4 +98,10 @@ void StartField::paintEvent(QPaintEvent *)
 
     painter.setFont(startFont);
     painter.drawText(28,55,"START");
+
+    for(int i = 0; i < m_playersOnField.size(); i++) {
+        QBrush brush(m_playersOnField[i]->color(), Qt::SolidPattern);
+        painter.setBrush(brush);
+        painter.drawEllipse(5+i*22, 5, 20, 20);
+    }
 }

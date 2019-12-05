@@ -25,7 +25,7 @@
   <property name="windowTitle">
    <string>Monopoly</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>21</x>
@@ -186,7 +186,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QFrame" name="centralPlayer1Frame">
+     <widget class="PlayerInfoField" name="centralPlayer1Frame">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -202,7 +202,7 @@
      </widget>
     </item>
     <item row="1" column="2">
-     <widget class="QFrame" name="centralPlayer2Frame">
+     <widget class="PlayerInfoField" name="centralPlayer2Frame">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -218,7 +218,7 @@
      </widget>
     </item>
     <item row="1" column="3">
-     <widget class="QFrame" name="centralPlayer3Frame">
+     <widget class="PlayerInfoField" name="centralPlayer3Frame">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -334,7 +334,7 @@
      </widget>
     </item>
     <item row="3" column="2">
-     <widget class="QFrame" name="centralGamerFrame">
+     <widget class="PlayerInfoField" name="centralGamerFrame">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -513,6 +513,12 @@
    <class>Field</class>
    <extends>QFrame</extends>
    <header location="global">field.hpp</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PlayerInfoField</class>
+   <extends>QFrame</extends>
+   <header location="global">playerinfofield.hpp</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

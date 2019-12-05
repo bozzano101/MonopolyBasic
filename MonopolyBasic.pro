@@ -20,6 +20,7 @@ SOURCES += \
     gamewindow.cpp \
     main.cpp \
     player.cpp \
+    playerinfofield.cpp \
     playersrepository.cpp \
     welcomewindow.cpp
 
@@ -27,6 +28,7 @@ HEADERS += \
     field.hpp \
     gamewindow.hpp \
     player.hpp \
+    playerinfofield.hpp \
     playersrepository.hpp \
     welcomewindow.hpp
 

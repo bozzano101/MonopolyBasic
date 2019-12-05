@@ -28,7 +28,7 @@ public:
     void removePlayerOnField(Player *p);
     void prepareField(int id, QString name, int priceForBuy, int priceForRent);
 
-private:
+protected:
     int m_id;
     QString m_streetName;
     int m_priceForBuy;
@@ -41,6 +41,7 @@ class StartField : public Field
 {
 public:
     StartField(QWidget *parent);
+    void prepareField();
     void paintEvent(QPaintEvent *) override;
 };
 
