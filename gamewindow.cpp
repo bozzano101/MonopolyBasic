@@ -27,10 +27,14 @@ void GameWindow::sendWelcomeInfoToGame(QString _playerName, QString _playerColor
 
     // TODO : Refactor this code; If player exist, give him field
     ui->centralPlayer1Frame->prepareField(m_aiPlayers[0]);
-    ui->centralPlayer2Frame->prepareField(m_aiPlayers[1]);
-    //
-
+    if(m_aiPlayers.size() >= 2 ) {
+        ui->centralPlayer2Frame->prepareField(m_aiPlayers[1]);
+        if(m_aiPlayers.size() == 3)
+            ui->centralPlayer3Frame->prepareField(m_aiPlayers[2]);
+    }
     ui->centralGamerFrame->prepareField(m_player);
+
+    m_playersWheel = new CircularList(m_player, m_aiPlayers);
 
 }
 

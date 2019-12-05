@@ -8,6 +8,7 @@
 
 #include <field.hpp>
 #include <playersrepository.hpp>
+#include <circularlist.hpp>
 
 namespace Ui {
 class GameWindow;
@@ -30,7 +31,7 @@ private:
     int m_opponentsNumber;
     PlayersRepository m_playersRepo;
     QVector<Player*> m_aiPlayers;
-
+    CircularList *m_playersWheel;
     void prepareFields();
 };
 
