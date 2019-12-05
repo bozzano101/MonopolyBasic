@@ -27,6 +27,7 @@ public:
     void addPlayerOnField(Player *p);
     void removePlayerOnField(Player *p);
     void prepareField(int id, QString name, int priceForBuy, int priceForRent);
+    int Id();
 
 protected:
     int m_id;

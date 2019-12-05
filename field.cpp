@@ -77,6 +77,11 @@ void Field::prepareField(int id, QString name, int priceForBuy, int priceForRent
     setPriceForRenting(priceForRent);
 }
 
+int Field::Id()
+{
+    return  m_id;
+}
+
 StartField::StartField(QWidget *parent)
     :Field(parent)
 {

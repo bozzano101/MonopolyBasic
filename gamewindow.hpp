@@ -9,6 +9,7 @@
 #include <field.hpp>
 #include <playersrepository.hpp>
 #include <circularlist.hpp>
+#include <move.hpp>
 
 namespace Ui {
 class GameWindow;
@@ -24,6 +25,7 @@ public:
 
 public slots:
     void sendWelcomeInfoToGame(QString playerName, QString playerColor, int opponentNum);
+    //void notifyNewPosition(int newId);
 
 private:
     Ui::GameWindow *ui;
@@ -31,8 +33,12 @@ private:
     int m_opponentsNumber;
     PlayersRepository m_playersRepo;
     QVector<Player*> m_aiPlayers;
-    CircularList *m_playersWheel;
+
     void prepareFields();
+    void startGame();
+
+    CircularList *m_playersWheel;
+
 };
 
 #endif // GAMEWINDOW_HPP

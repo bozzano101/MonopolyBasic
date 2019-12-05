@@ -36,6 +36,8 @@ void GameWindow::sendWelcomeInfoToGame(QString _playerName, QString _playerColor
 
     m_playersWheel = new CircularList(m_player, m_aiPlayers);
 
+    startGame();
+
 }
 
 void GameWindow::prepareFields()
@@ -57,4 +59,13 @@ void GameWindow::prepareFields()
     ui->field13Frame->prepareField(13, "Rutgers street", 600, 60);
     ui->field14Frame->prepareField(14, "St Marks place", 1050, 105);
     ui->field15Frame->prepareField(15, "Stanton Street", 200, 20);
+}
+
+void GameWindow::startGame()
+{
+        Player* nextOnMove = m_playersWheel->next();
+        Move* object = new Move(nextOnMove, ui->field0Frame);
+        connect(ui->onMoveButton, &QPushButton::clicked, object, &Move::generateNumber);
+        ui->onMoveButton->setEnabled(true);
+
 }

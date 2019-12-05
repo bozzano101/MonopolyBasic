@@ -20,6 +20,7 @@ SOURCES += \
     field.cpp \
     gamewindow.cpp \
     main.cpp \
+    move.cpp \
     player.cpp \
     playerinfofield.cpp \
     playersrepository.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     circularlist.hpp \
     field.hpp \
     gamewindow.hpp \
+    move.hpp \
     player.hpp \
     playerinfofield.hpp \
     playersrepository.hpp \
