@@ -18,7 +18,7 @@ public slots:
     void generateNumber();
 
 signals:
-    void notifyNewPosition(int newId);
+    void notifyNewPosition(Player* playerOnMove, int newId);
 
 private:
     Player* m_playerOnMove;

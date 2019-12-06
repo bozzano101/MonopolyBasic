@@ -21,6 +21,7 @@ SOURCES += \
     gamewindow.cpp \
     main.cpp \
     move.cpp \
+    offertobuy.cpp \
     player.cpp \
     playerinfofield.cpp \
     playersrepository.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     field.hpp \
     gamewindow.hpp \
     move.hpp \
+    offertobuy.hpp \
     player.hpp \
     playerinfofield.hpp \
     playersrepository.hpp \

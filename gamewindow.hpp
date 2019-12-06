@@ -22,10 +22,15 @@ class GameWindow : public QWidget
 public:
     explicit GameWindow(QWidget *parent = nullptr);
     ~GameWindow();
+    void startGame();
+    void moveProcedure1();
+    void prepareFields();
+    Field* findFieldById(int id);
 
 public slots:
     void sendWelcomeInfoToGame(QString playerName, QString playerColor, int opponentNum);
-    //void notifyNewPosition(int newId);
+    void notifyNewPosition(Player* playerOnMove, int newId);
+
 
 private:
     Ui::GameWindow *ui;
@@ -33,10 +38,6 @@ private:
     int m_opponentsNumber;
     PlayersRepository m_playersRepo;
     QVector<Player*> m_aiPlayers;
-
-    void prepareFields();
-    void startGame();
-
     CircularList *m_playersWheel;
 
 };

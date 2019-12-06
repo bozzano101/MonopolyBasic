@@ -13,14 +13,9 @@ Move::Move(Player *playerOnMove, Field *currentField)
 
 void Move::generateNumber()
 {
-
-    qDebug() << "HELLO FROM GENERATE NUMBER";
-
     QRandomGenerator generator = QRandomGenerator::securelySeeded();
     m_generatedNumMoveField = (generator.bounded(1,7) + m_currentField->Id()) % 16;
     m_currentField->removePlayerOnField(m_playerOnMove);
     m_currentField->repaint();
-
-    // emit notifyNewPosition(m_generatedNumMoveField);
-
+    emit notifyNewPosition(m_playerOnMove, m_generatedNumMoveField);
 }

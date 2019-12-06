@@ -534,7 +534,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="onMovePlayerName">
        <property name="font">
         <font>
          <pointsize>11</pointsize>

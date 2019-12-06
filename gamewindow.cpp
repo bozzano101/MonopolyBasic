@@ -61,11 +61,65 @@ void GameWindow::prepareFields()
     ui->field15Frame->prepareField(15, "Stanton Street", 200, 20);
 }
 
+Field *GameWindow::findFieldById(int id)
+{
+    switch (id) {
+    case 0:
+        return ui->field0Frame;
+    case 1:
+        return ui->field1Frame;
+    case 2:
+        return ui->field2Frame;
+    case 3:
+        return ui->field3Frame;
+    case 4:
+        return ui->field4Frame;
+    case 5:
+        return ui->field5Frame;
+    case 6:
+        return ui->field6Frame;
+    case 7:
+        return ui->field7Frame;
+    case 8:
+        return ui->field8Frame;
+    case 9:
+        return ui->field9Frame;
+    case 10:
+        return ui->field10Frame;
+    case 11:
+        return ui->field11Frame;
+    case 12:
+        return ui->field12Frame;
+    case 13:
+        return ui->field13Frame;
+    case 14:
+        return ui->field14Frame;
+    case 15:
+        return ui->field15Frame;
+    default:
+        break;
+    }
+    return ui->field0Frame;
+}
+
 void GameWindow::startGame()
 {
-        Player* nextOnMove = m_playersWheel->next();
-        Move* object = new Move(nextOnMove, ui->field0Frame);
-        connect(ui->onMoveButton, &QPushButton::clicked, object, &Move::generateNumber);
-        ui->onMoveButton->setEnabled(true);
+    moveProcedure1();
 
+}
+
+void GameWindow::moveProcedure1()
+{
+    Player* nextOnMove = m_playersWheel->next();                                        // Choose which player will play next
+    ui->onMovePlayerName->setText(nextOnMove->name());                                  // Change label text
+    Move* newMove = new Move(nextOnMove, ui->field0Frame);                              // Create his next move-object
+    connect(ui->onMoveButton, &QPushButton::clicked, newMove, &Move::generateNumber);   // Connect button to move-object
+    connect(newMove, &Move::notifyNewPosition, this, &GameWindow::notifyNewPosition);   // Connect move-object to add to new field
+    ui->onMoveButton->setEnabled(true);                                                 // Enable button for click
+}
+
+void GameWindow::notifyNewPosition(Player *playerOnMove, int newId)
+{
+    findFieldById(newId)->addPlayerOnField(playerOnMove);                                       // Add player on new field
+    findFieldById(newId)->repaint();
 }
