@@ -41,6 +41,11 @@ void Player::removeMoney(int amount)
     m_money -= amount;
 }
 
+void Player::addMoney(int amount)
+{
+    m_money += amount;
+}
+
 void Player::setFieldId(int id)
 {
     m_fieldOnId = id;

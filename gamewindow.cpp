@@ -42,7 +42,7 @@ void GameWindow::sendWelcomeInfoToGame(QString _playerName, QString _playerColor
 void GameWindow::prepareFields()
 {
 
-    ui->field0Frame->prepareField();
+    ui->field0Frame->prepareField(); ui->field0Frame->setId(-1);
     ui->field1Frame->prepareField(1, "Allen Street", 500, 50);
     ui->field2Frame->prepareField(2, "Beekman Place", 750, 75);
     ui->field3Frame->prepareField(3, "Cabrini Bvd", 300, 30);
@@ -126,7 +126,7 @@ void GameWindow::notifyNewPosition2(Player *playerOnMove, int newId)
     currentField->repaint();                                                    // Refresh GUI
     ui->onMoveButton->setEnabled(false);                                        // Disable generate button
 
-    if(currentField->Owner() == nullptr) {
+    if((currentField->Id() != -1) && (currentField->Owner() == nullptr) && (currentField->PriceForBuy() <= playerOnMove->money())) {
         tmpObject2 = new OfferToBuy(playerOnMove, currentField);
         ui->offerToBuyNO->setEnabled(true);
         ui->offerToBuyYES->setEnabled(true);
@@ -134,21 +134,36 @@ void GameWindow::notifyNewPosition2(Player *playerOnMove, int newId)
         connect(ui->offerToBuyNO, &QPushButton::clicked, tmpObject2, &OfferToBuy::playerClickedNo);
         connect(tmpObject2, &OfferToBuy::finishedOffer, this, &GameWindow::finishedOfferProposal);
     }
-    else {
-        // playerOnMove must pay rent
-    }
+    else if (currentField->Owner() != nullptr){
+        playerOnMove->removeMoney(currentField->PriceForRent());
+        currentField->Owner()->addMoney(currentField->PriceForRent());
 
-    /* IMPORTANT :
-     * Start field cannot be bought !
-     * You cannot buy a field if you don't have money
-     */
+        ui->centralPlayer1Frame->repaint();
+        ui->centralPlayer2Frame->repaint();
+        ui->centralPlayer3Frame->repaint();
+        ui->centralGamerFrame->repaint();
+
+        startGame();
+    }
+    else if (currentField->Id() == -1) {
+        startGame();
+    }
 }
 
 void GameWindow::finishedOfferProposal(Player *player, Field *field)
 {
+    ui->centralPlayer1Frame->repaint();
+    ui->centralPlayer2Frame->repaint();
+    ui->centralPlayer3Frame->repaint();
+    ui->centralGamerFrame->repaint();
+    field->repaint();
+
     disconnect(ui->offerToBuyYES, &QPushButton::clicked, tmpObject2, &OfferToBuy::playerClickedYes);
     disconnect(ui->offerToBuyNO, &QPushButton::clicked, tmpObject2, &OfferToBuy::playerClickedNo);
-    // Remove player atribute
+
+    ui->offerToBuyNO->setEnabled(false);
+    ui->offerToBuyYES->setEnabled(false);
+
     player->id();
     field->repaint();
     startGame();

@@ -16,6 +16,7 @@ public:
     int money();
     QString name();
     void removeMoney(int amount);
+    void addMoney(int amount);
     void setFieldId(int id);
     int fieldId();
 

@@ -99,6 +99,11 @@ int Field::PriceForBuy()
     return m_priceForBuy;
 }
 
+int Field::PriceForRent()
+{
+    return m_priceForRenting;
+}
+
 StartField::StartField(QWidget *parent)
     :Field(parent)
 {

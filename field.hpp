@@ -31,6 +31,7 @@ public:
     int Id();
     Player *Owner();
     int PriceForBuy();
+    int PriceForRent();
 
 protected:
     int m_id;
