@@ -6,6 +6,7 @@
 #include <QSizePolicy>
 #include <QDebug>
 #include <QFont>
+#include <QPen>
 
 #include <player.hpp>
 
@@ -28,13 +29,15 @@ public:
     void removePlayerOnField(Player *p);
     void prepareField(int id, QString name, int priceForBuy, int priceForRent);
     int Id();
+    Player *Owner();
+    int PriceForBuy();
 
 protected:
     int m_id;
     QString m_streetName;
     int m_priceForBuy;
     int m_priceForRenting;
-    Player *m_owner;
+    Player *m_owner = nullptr;
     QVector<Player*> m_playersOnField;
 };
 

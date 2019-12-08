@@ -25,7 +25,6 @@ void GameWindow::sendWelcomeInfoToGame(QString _playerName, QString _playerColor
         ui->field0Frame->addPlayerOnField(m_aiPlayers[i]);
     ui->field0Frame->addPlayerOnField(m_player);
 
-    // TODO : Refactor this code; If player exist, give him field
     ui->centralPlayer1Frame->prepareField(m_aiPlayers[0]);
     if(m_aiPlayers.size() >= 2 ) {
         ui->centralPlayer2Frame->prepareField(m_aiPlayers[1]);
@@ -104,22 +103,53 @@ Field *GameWindow::findFieldById(int id)
 
 void GameWindow::startGame()
 {
-    moveProcedure1();
+    generateDice1();
 
 }
 
-void GameWindow::moveProcedure1()
+void GameWindow::generateDice1()
 {
-    Player* nextOnMove = m_playersWheel->next();                                        // Choose which player will play next
-    ui->onMovePlayerName->setText(nextOnMove->name());                                  // Change label text
-    Move* newMove = new Move(nextOnMove, ui->field0Frame);                              // Create his next move-object
-    connect(ui->onMoveButton, &QPushButton::clicked, newMove, &Move::generateNumber);   // Connect button to move-object
-    connect(newMove, &Move::notifyNewPosition, this, &GameWindow::notifyNewPosition);   // Connect move-object to add to new field
-    ui->onMoveButton->setEnabled(true);                                                 // Enable button for click
+    Player* nextOnMove = m_playersWheel->next();                                            // Choose which player will play next
+    ui->onMovePlayerName->setText(nextOnMove->name());                                      // Change label text
+    tmpObject1 = new Move(nextOnMove, findFieldById(nextOnMove->fieldId()));                // Create his next move-object
+    connect(ui->onMoveButton, &QPushButton::clicked, tmpObject1, &Move::generateNumber);    // Connect button to move-object
+    connect(tmpObject1, &Move::notifyNewPosition, this, &GameWindow::notifyNewPosition2);   // Connect move-object to add to new field
+    ui->onMoveButton->setEnabled(true);                                                     // Enable button for click
 }
 
-void GameWindow::notifyNewPosition(Player *playerOnMove, int newId)
+void GameWindow::notifyNewPosition2(Player *playerOnMove, int newId)
+{   
+    disconnect(ui->onMoveButton, &QPushButton::clicked, tmpObject1, &Move::generateNumber);
+
+    Field *currentField = findFieldById(newId);
+    currentField->addPlayerOnField(playerOnMove);                               // Add player on new field
+    currentField->repaint();                                                    // Refresh GUI
+    ui->onMoveButton->setEnabled(false);                                        // Disable generate button
+
+    if(currentField->Owner() == nullptr) {
+        tmpObject2 = new OfferToBuy(playerOnMove, currentField);
+        ui->offerToBuyNO->setEnabled(true);
+        ui->offerToBuyYES->setEnabled(true);
+        connect(ui->offerToBuyYES, &QPushButton::clicked, tmpObject2, &OfferToBuy::playerClickedYes);
+        connect(ui->offerToBuyNO, &QPushButton::clicked, tmpObject2, &OfferToBuy::playerClickedNo);
+        connect(tmpObject2, &OfferToBuy::finishedOffer, this, &GameWindow::finishedOfferProposal);
+    }
+    else {
+        // playerOnMove must pay rent
+    }
+
+    /* IMPORTANT :
+     * Start field cannot be bought !
+     * You cannot buy a field if you don't have money
+     */
+}
+
+void GameWindow::finishedOfferProposal(Player *player, Field *field)
 {
-    findFieldById(newId)->addPlayerOnField(playerOnMove);                                       // Add player on new field
-    findFieldById(newId)->repaint();
+    disconnect(ui->offerToBuyYES, &QPushButton::clicked, tmpObject2, &OfferToBuy::playerClickedYes);
+    disconnect(ui->offerToBuyNO, &QPushButton::clicked, tmpObject2, &OfferToBuy::playerClickedNo);
+    // Remove player atribute
+    player->id();
+    field->repaint();
+    startGame();
 }

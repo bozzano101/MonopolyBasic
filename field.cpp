@@ -20,8 +20,15 @@ void Field::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
 
+    QPen current = painter.pen();
+    if(m_owner != nullptr) {
+        QPen newPen(m_owner->color());
+        painter.setPen(newPen);
+    }
+
     painter.setFont(streetNameFont);
     painter.drawText(5,40, m_streetName);
+    painter.setPen(current);
 
     painter.setFont(priceFont);
     painter.drawText(5,55, "Buy for: " + QString::number(m_priceForBuy));
@@ -80,6 +87,16 @@ void Field::prepareField(int id, QString name, int priceForBuy, int priceForRent
 int Field::Id()
 {
     return  m_id;
+}
+
+Player *Field::Owner()
+{
+    return m_owner;
+}
+
+int Field::PriceForBuy()
+{
+    return m_priceForBuy;
 }
 
 StartField::StartField(QWidget *parent)

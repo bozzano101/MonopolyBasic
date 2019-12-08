@@ -15,13 +15,17 @@ public:
     QColor color();
     int money();
     QString name();
-
+    void removeMoney(int amount);
+    void setFieldId(int id);
+    int fieldId();
 
 private:
     int m_id;
+    int m_fieldOnId = 0;
     QString m_name;
     int m_money;
     QColor m_color;
+
 };
 
 #endif // PLAYER_HPP

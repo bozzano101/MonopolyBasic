@@ -35,3 +35,18 @@ QString Player::name()
 {
     return m_name;
 }
+
+void Player::removeMoney(int amount)
+{
+    m_money -= amount;
+}
+
+void Player::setFieldId(int id)
+{
+    m_fieldOnId = id;
+}
+
+int Player::fieldId()
+{
+    return m_fieldOnId;
+}

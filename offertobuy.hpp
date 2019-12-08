@@ -9,11 +9,14 @@ class OfferToBuy : public QWidget
 {
     Q_OBJECT
 public:
-    OfferToBuy();
+    OfferToBuy(Player* player, Field* field);
 
 public slots:
     void playerClickedYes();
     void playerClickedNo();
+
+signals:
+    void finishedOffer(Player* player, Field* field);
 
 private:
     Player* m_player;
